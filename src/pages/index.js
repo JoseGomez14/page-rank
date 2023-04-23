@@ -162,25 +162,38 @@ export default function Home() {
                   iterations
                 </h2>
               )}
-              {pageRank.pageRank.map(({ value, title, description }, index) => (
-                <div key={index} className={styles.card}>
-                  <h2 className={inter.className}>{title}</h2>
-                  <p className={inter.className}>{description}</p>
-                  <p className={inter.className}>PR: {value.toFixed(4)}</p>
-                </div>
-              ))}
+              {pageRank.pageRank.map(
+                ({ value, title, description, trustRank, spamMass }, index) => (
+                  <div key={index} className={styles.card}>
+                    <h2 className={inter.className}>{title}</h2>
+                    <p className={inter.className}>{description}</p>
+                    <p className={inter.className}>
+                      PR: {value.toFixed(4)} | TR: {trustRank.toFixed(4)} | SM:{" "}
+                      {spamMass ? spamMass.toFixed(4) : "N/A"}
+                    </p>
+                  </div>
+                )
+              )}
             </>
           ) : (
             recomendations.length > 0 && (
               <>
                 <h2 className={inter.className}>Recomended Pages</h2>
-                {recomendations.map(({ value, title, description }, index) => (
-                  <div key={index} className={styles.card}>
-                    <h2 className={inter.className}>{title}</h2>
-                    <p className={inter.className}>{description}</p>
-                    <p className={inter.className}>PR: {value.toFixed(4)}</p>
-                  </div>
-                ))}
+                {recomendations.map(
+                  (
+                    { value, title, description, trustRank, spamMass },
+                    index
+                  ) => (
+                    <div key={index} className={styles.card}>
+                      <h2 className={inter.className}>{title}</h2>
+                      <p className={inter.className}>{description}</p>
+                      <p className={inter.className}>
+                        PR: {value.toFixed(4)} | TR: {trustRank.toFixed(4)} |
+                        SM: {spamMass.toFixed(4)}
+                      </p>
+                    </div>
+                  )
+                )}
               </>
             )
           )}
