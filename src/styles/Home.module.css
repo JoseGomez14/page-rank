@@ -145,19 +145,27 @@
   outline: none;
 }
 
-.settingButton{
+.fixedButtons{
   position: fixed;
   top: 1rem;
   right: 1rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.settingButton{
   width: 48px;
   height: 48px;
   border: none;
-  z-index: 100;
   background: transparent;
   color: var(--text-color);
-  font-size: 1.2rem;
+  font-size: 1.75rem;
   cursor: pointer;
   outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button:hover, .settingButton:hover {
