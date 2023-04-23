@@ -3,7 +3,7 @@ import WebMatrix from "@/utils/WebMatriz";
 import { WebNetwork } from "@/web/webNetwork";
 
 const EPSILON = 0.001;
-const BETHA = 0.8;
+const BETHA = 0.85;  // A value between 0.8 and 0.9 is recommended
 
 const getPageRank = (b, eps) => {
   const WEB = new WebMatrix();
