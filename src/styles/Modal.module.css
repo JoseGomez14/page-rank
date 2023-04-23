@@ -1,0 +1,87 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalDialog {
+  width: min(880px, 95%);
+  height: 80vh;
+  background-color: rgb(var(--callout-rgb));
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  overflow: hidden;
+  animation: modal 200ms ease-out;
+}
+
+.modalBody {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+  overflow: auto;
+}
+
+.formCheckInput {
+  margin: 0.5rem;
+}
+
+.formCheckLabel {
+  margin: 0.5rem;
+}
+
+.btnSave {
+  align-self: flex-end;
+  margin: 0.5rem;
+  border: none;
+  z-index: 100;
+  background: transparent;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.btnCancel {
+  align-self: flex-end;
+  margin: 0.5rem;
+  border: none;
+  z-index: 100;
+  background: transparent;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.modalClose {
+  display: none;
+}
+
+.card {
+  padding: 1rem 1.2rem;
+  border-radius: var(--border-radius);
+  background: rgba(var(--card-rgb), 0);
+  border: 1px solid rgba(var(--card-border-rgb), 0);
+  transition: background 200ms, border 200ms;
+  cursor: pointer;
+}
+
+.card:hover {
+  background: rgba(var(--card-rgb), 0.1);
+  border: 1px solid rgba(var(--card-border-rgb), 0.15);
+}
