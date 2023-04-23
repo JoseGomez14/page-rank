@@ -2,7 +2,7 @@ import { topics } from "@/web/topics";
 
 export default class UserPreferences {
   constructor() {
-    topicsPreferences = {};
+    let topicsPreferences = {};
     for (let topic of topics) {
       topicsPreferences[topic] = 0;
     }
@@ -23,7 +23,7 @@ export default class UserPreferences {
       );
       this._topicsPreferences = topicsPreferences;
     }
-    return topicsPreferences;
+    return this._topicsPreferences;
   }
 
   /**
