@@ -5,6 +5,7 @@ export const WebNetwork = {
     links: ["CD", "EF", "GH"],
     primaryTopic: "reference",
     secondaryTopics: ["art", "science"],
+    trust: 1,
   },
   CD: {
     title: "Cool Designs",
@@ -12,6 +13,7 @@ export const WebNetwork = {
     links: ["AB", "EF", "IJ", "MN", "UV"],
     primaryTopic: "art",
     secondaryTopics: ["computers", "recreation"],
+    trust: 1,
   },
   EF: {
     title: "Expert Finance",
@@ -19,6 +21,7 @@ export const WebNetwork = {
     links: ["AB", "CD", "KL"],
     primaryTopic: "business",
     secondaryTopics: ["science", "world"],
+    trust: 1,
   },
   GH: {
     title: "Great Health",
@@ -26,6 +29,7 @@ export const WebNetwork = {
     links: [],
     primaryTopic: "health",
     secondaryTopics: ["recreation", "society"],
+    trust: 1,
   },
   IJ: {
     title: "Incredible Jobs",
@@ -33,6 +37,7 @@ export const WebNetwork = {
     links: ["CD", "GH"],
     primaryTopic: "business",
     secondaryTopics: ["computers", "world"],
+    trust: 1,
   },
   KL: {
     title: "Killer Lifestyle",
@@ -40,6 +45,7 @@ export const WebNetwork = {
     links: ["EF", "MN", "OP"],
     primaryTopic: "health",
     secondaryTopics: ["recreation", "society"],
+    trust: 1,
   },
   MN: {
     title: "My News",
@@ -47,6 +53,7 @@ export const WebNetwork = {
     links: ["GH", "IJ"],
     primaryTopic: "news",
     secondaryTopics: ["business", "world"],
+    trust: 1,
   },
   OP: {
     title: "Outstanding Photography",
@@ -54,6 +61,7 @@ export const WebNetwork = {
     links: ["KL", "QR"],
     primaryTopic: "art",
     secondaryTopics: ["recreation", "society"],
+    trust: 1,
   },
   QR: {
     title: "Quick Recipes",
@@ -62,6 +70,7 @@ export const WebNetwork = {
     links: ["OP", "ST", "UV"],
     primaryTopic: "home",
     secondaryTopics: ["health", "recreation"],
+    trust: 1,
   },
   ST: {
     title: "Super Travel",
@@ -69,6 +78,7 @@ export const WebNetwork = {
     links: ["UV"],
     primaryTopic: "recreation",
     secondaryTopics: ["world", "society"],
+    trust: 1,
   },
   UV: {
     title: "Ultimate Video Games",
@@ -76,6 +86,7 @@ export const WebNetwork = {
     links: ["QR", "XY", "UV"],
     primaryTopic: "games",
     secondaryTopics: ["computers", "recreation"],
+    trust: 0,
   },
   XY: {
     title: "Xtreme Sports",
@@ -83,6 +94,7 @@ export const WebNetwork = {
     links: ["UV", "YZ", "BC"],
     primaryTopic: "sports",
     secondaryTopics: ["recreation", "society"],
+    trust: 1,
   },
   YZ: {
     title: "Youth Zone",
@@ -90,6 +102,7 @@ export const WebNetwork = {
     links: ["UV"],
     primaryTopic: "kids and teens",
     secondaryTopics: ["recreation", "society"],
+    trust: 1,
   },
   DE: {
     title: "Digital Entrepreneur",
@@ -97,6 +110,7 @@ export const WebNetwork = {
     links: ["AB", "GH"],
     primaryTopic: "business",
     secondaryTopics: ["computers", "society"],
+    trust: 1,
   },
   FG: {
     title: "Fashionista",
@@ -104,6 +118,7 @@ export const WebNetwork = {
     links: ["IJ", "KL"],
     primaryTopic: "recreation",
     secondaryTopics: ["society"],
+    trust: 1,
   },
   HI: {
     title: "Home Decor",
@@ -111,6 +126,7 @@ export const WebNetwork = {
     links: ["AB", "QR"],
     primaryTopic: "home",
     secondaryTopics: ["recreation"],
+    trust: 1,
   },
   JK: {
     title: "Job Search",
@@ -118,6 +134,7 @@ export const WebNetwork = {
     links: ["MN", "OP", "XY"],
     primaryTopic: "business",
     secondaryTopics: ["reference"],
+    trust: 1,
   },
   LM: {
     title: "Lifelong Learning",
@@ -125,6 +142,7 @@ export const WebNetwork = {
     links: ["FG", "ST"],
     primaryTopic: "education",
     secondaryTopics: ["reference", "computers"],
+    trust: 1,
   },
   NO: {
     title: "Nature",
@@ -132,6 +150,7 @@ export const WebNetwork = {
     links: ["YZ", "XY"],
     primaryTopic: "recreation",
     secondaryTopics: ["science"],
+    trust: 1,
   },
   PQ: {
     title: "Pet Lovers",
@@ -139,6 +158,7 @@ export const WebNetwork = {
     links: [],
     primaryTopic: "recreation",
     secondaryTopics: ["society"],
+    trust: 1,
   },
   RS: {
     title: "Real Estate",
@@ -146,6 +166,7 @@ export const WebNetwork = {
     links: ["HI"],
     primaryTopic: "business",
     secondaryTopics: ["reference"],
+    trust: 1,
   },
   TU: {
     title: "Technology News",
@@ -153,6 +174,7 @@ export const WebNetwork = {
     links: ["BC", "UV"],
     primaryTopic: "computers",
     secondaryTopics: ["science"],
+    trust: 1,
   },
   BC: {
     title: "Best Cars",
@@ -160,5 +182,6 @@ export const WebNetwork = {
     links: ["TU", "XY"],
     primaryTopic: "recreation",
     secondaryTopics: ["reference"],
+    trust: 1,
   }
 };
