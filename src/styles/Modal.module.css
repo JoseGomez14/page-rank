@@ -85,3 +85,15 @@
   background: rgba(var(--card-rgb), 0.1);
   border: 1px solid rgba(var(--card-border-rgb), 0.15);
 }
+
+@media (min-width: 701px) and (max-width: 1120px) {
+  .modalBody {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+@media (max-width: 700px) {
+  .modalBody {
+    grid-template-columns: 1fr;
+  }
+}
