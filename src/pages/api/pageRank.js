@@ -4,19 +4,16 @@ import { WebNetwork } from "@/web/webNetwork";
 
 const EPSILON = 0.001;
 const BETHA = 0.85; // A value between 0.8 and 0.9 is recommended
+const WEB = new WebMatrix();
+WEB.add_nodes_(Object.keys(WebNetwork));
+WEB.add_edges_(
+  Object.entries(WebNetwork)
+    .map(([node, { links }]) => links.map((link) => [node, link]))
+    .flat()
+);
 
 const getPageRank = (b, eps, preferences) => {
-  const WEB = new WebMatrix();
-  //Start the time to calculate the time of execution with performance.now()
-
   const performanceTime = performance.now();
-  WEB.add_nodes_(Object.keys(WebNetwork));
-  WEB.add_edges_(
-    Object.entries(WebNetwork)
-      .map(([node, { links }]) => links.map((link) => [node, link]))
-      .flat()
-  );
-
   let n = WEB._n;
   let m = null;
   let vi = null;
@@ -58,8 +55,19 @@ const getPageRank = (b, eps, preferences) => {
   return { pageRank, iterations, time };
 };
 
+const getTrustRank = (b, eps) => {
+  const performanceTime = performance.now();
+  getPageRank(b, eps);
+  const [trustRank, iterations] = WEB.TrustRank_(b, eps);
+
+  const time = (performance.now() - performanceTime) / 1000;
+
+  return { trustRank, iterations, time };
+};
+
 const filterPages = (query, preferences) => {
   const PAGERANK = getPageRank(BETHA, EPSILON, preferences);
+  const TRUSTRANK = getTrustRank(BETHA, EPSILON);
   let { pageRank, iterations, time } = { ...PAGERANK };
   let queryNd = query.trim().toLowerCase();
   queryNd = queryNd.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -72,6 +80,14 @@ const filterPages = (query, preferences) => {
       primaryTopic.includes(queryNd) ||
       secondaryTopics.some((topic) => topic.includes(queryNd))
     );
+  });
+
+  //Add the property trustRank to the pageRank
+  pageRank = pageRank.map((page) => {
+    const { node, value } = page;
+    const trustRank = TRUSTRANK.trustRank[node];
+    const spamMass = (value - trustRank) / value;
+    return { ...page, trustRank, spamMass };
   });
 
   return { pageRank, iterations, time };
