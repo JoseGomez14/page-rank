@@ -145,6 +145,26 @@
   outline: none;
 }
 
+.settingButton{
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 48px;
+  height: 48px;
+  border: none;
+  z-index: 100;
+  background: transparent;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.button:hover, .settingButton:hover {
+  transition: transform 200ms;
+  transform: scale(1.1);
+}
+
 .logo {
   position: relative;
 }
