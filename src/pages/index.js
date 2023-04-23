@@ -3,10 +3,10 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { useEffect, useState } from "react";
-import { SearchIcon, SettingsIcon } from "@/components/iconos";
+import { GithubIcon, SearchIcon, SettingsIcon } from "@/components/iconos";
 import SettingsModal from "@/components/settingsModal";
 import UserPreferences from "@/utils/UserPreferences";
-import Graph from "@/components/Graph";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +17,7 @@ export default function Home() {
   const [inputSearch, setInputSearch] = useState("");
   const [showSettings, setShowSettings] = useState(false);
   const userPreferences = new UserPreferences();
+  // const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
     let topicsPreferences = null;
@@ -37,6 +38,10 @@ export default function Home() {
     if (!localStorage.getItem("topicsPreferences")) {
       setShowSettings(true);
     }
+
+    // if (localStorage.getItem("theme")) {
+    //   setTheme(localStorage.getItem("theme"));
+    // }
   }, []);
 
   const handleSubmit = (e) => {
@@ -75,6 +80,13 @@ export default function Home() {
     }
   };
 
+  const handleThemeChange = (e) => {
+    const { value } = e.target;
+    setTheme(value);
+    localStorage.setItem("theme", value);
+    // change the prefers-color-scheme when the user clicks on the button
+  };
+
   return (
     <>
       <Head>
@@ -87,12 +99,30 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <button
-          className={styles.settingButton}
-          onClick={() => setShowSettings(true)}
-        >
-          <SettingsIcon />
-        </button>
+        <div className={styles.fixedButtons}>
+          <button
+            className={styles.settingButton}
+            onClick={() => setShowSettings(true)}
+          >
+            <SettingsIcon />
+          </button>
+          {/* <button
+            className={styles.settingButton}
+            title="Change Theme"
+            value={theme === "dark" ? "light" : "dark"}
+            onClick={handleThemeChange}
+          >
+            {theme === "dark" ? "🌚" : "🌞"}
+          </button> */}
+          <Link
+            className={styles.settingButton}
+            href="https://github.com/JoseGomez14/page-rank"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GithubIcon />
+          </Link>
+        </div>
         <div className={styles.center}>
           <Image
             className={styles.logo}
