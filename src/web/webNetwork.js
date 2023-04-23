@@ -1,27 +1,94 @@
 export const WebNetwork = {
-  A: {
-    links: ["B", "C", "D"],
-    mainTopic: "art",
-    subTopics: ["art"]
+  AB: {
+    title: "Awesome Books",
+    description: "A curated collection of the best books out there",
+    links: ["CD", "EF", "GH"],
+    primaryTopic: "reference",
+    secondaryTopics: ["art", "science"],
   },
-  B: {
-    links: ["A", "C"],
-    mainTopic: "business",
-    subTopics: ["business"]
+  CD: {
+    title: "Cool Designs",
+    description: "A showcase of the most creative design projects",
+    links: ["AB", "EF", "IJ", "MN"],
+    primaryTopic: "art",
+    secondaryTopics: ["computers", "recreation"],
   },
-  C: {
-    links: ["B", "D"],
-    mainTopic: "computers",
-    subTopics: ["computers"]
+  EF: {
+    title: "Expert Finance",
+    description: "The latest financial news and advice from the experts",
+    links: ["AB", "CD", "KL"],
+    primaryTopic: "business",
+    secondaryTopics: ["science", "world"],
   },
-  D: {
-    links: ['E'],
-    mainTopic: "games",
-    subTopics: ["games"]
-  },
-  E: {
+  GH: {
+    title: "Great Health",
+    description: "Your guide to a healthy lifestyle",
     links: [],
-    mainTopic: "games",
-    subTopics: ["games"]
-  }
-}
+    primaryTopic: "health",
+    secondaryTopics: ["recreation", "society"],
+  },
+  IJ: {
+    title: "Incredible Jobs",
+    description: "Find your dream job with our job search engine",
+    links: ["CD", "GH"],
+    primaryTopic: "business",
+    secondaryTopics: ["computers", "world"],
+  },
+  KL: {
+    title: "Killer Lifestyle",
+    description: "Get inspired to live your best life",
+    links: ["EF", "MN", "OP"],
+    primaryTopic: "health",
+    secondaryTopics: ["recreation", "society"],
+  },
+  MN: {
+    title: "My News",
+    description: "Stay up-to-date with the latest news and headlines",
+    links: ["GH", "IJ"],
+    primaryTopic: "news",
+    secondaryTopics: ["business", "world"],
+  },
+  OP: {
+    title: "Outstanding Photography",
+    description: "A gallery of stunning photographs from around the world",
+    links: ["KL", "QR"],
+    primaryTopic: "art",
+    secondaryTopics: ["recreation", "society"],
+  },
+  QR: {
+    title: "Quick Recipes",
+    description:
+      "Cook up a storm with our collection of easy and delicious recipes",
+    links: ["OP", "ST", "UV"],
+    primaryTopic: "home",
+    secondaryTopics: ["health", "recreation"],
+  },
+  ST: {
+    title: "Super Travel",
+    description: "Discover new destinations and plan your next adventure",
+    links: [],
+    primaryTopic: "recreation",
+    secondaryTopics: ["world", "society"],
+  },
+  UV: {
+    title: "Ultimate Video Games",
+    description: "The latest news and reviews on video games",
+    links: ["QR", "XY"],
+    primaryTopic: "games",
+    secondaryTopics: ["computers", "recreation"],
+  },
+  XY: {
+    title: "Xtreme Sports",
+    description: "The ultimate source for extreme sports enthusiasts",
+    links: ["UV", "YZ", "BC"],
+    primaryTopic: "sports",
+    secondaryTopics: ["recreation", "society"],
+  },
+  YZ: {
+    title: "Youth Zone",
+    description: "The best resources and advice for kids and teens",
+    links: [],
+    primaryTopic: "kids and teens",
+    secondaryTopics: ["recreation", "society"],
+  },
+};
