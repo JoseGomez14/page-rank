@@ -89,4 +89,25 @@ export default class UserPreferences {
     );
     return preference;
   }
+
+  /**
+   * This method return true if the user has selected at least one topic.
+   * @returns {boolean} - true if the user has selected at least one topic, false otherwise.
+   * @example <caption>Example usage of hasAnyTopicSelected method.</caption>
+   * returns true
+   */
+  anyTopicSelected() {
+    if (localStorage.getItem("topicsPreferences") !== null) {
+      const topicsPreferences = JSON.parse(
+        localStorage.getItem("topicsPreferences")
+      );
+      this._topicsPreferences = topicsPreferences;
+    }
+    for (let topic of topics) {
+      if (this._topicsPreferences[topic] === 1) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

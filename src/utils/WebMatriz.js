@@ -1,5 +1,7 @@
+import { WebNetwork } from "@/web/webNetwork";
+
 export default class WebMatrix {
-  constructor(name) {
+  constructor() {
     this._G = new Map(); // Create an empty graph.
     this._n = 0; // Number of nodes.
     this._edges = 0; // Number of edges.
@@ -136,10 +138,10 @@ export default class WebMatrix {
    * @returns {Array} - array storing the PageRank for each node.
    * @returns {Number} - number of iterations.
    */
-  Taxation_(d, eps) {
+  Taxation_(d, eps, vi, m) {
     let nodes = Array.from(this._G.keys());
     let n = this._n;
-    let PageRankVector = new Array(n).fill(1 / n);
+    let PageRankVector = vi || new Array(n).fill(1 / n);
     let PageRankVector_new = new Array(n).fill(0);
     let iterations = 0;
     let diff = 1;
@@ -152,7 +154,14 @@ export default class WebMatrix {
             sum += this._dfMatrix[j][2] * PageRankVector[this._dfMatrix[j][0]];
           }
         }
-        PageRankVector_new[i] = (1 - d) / n + d * sum;
+        let dumpTopic = (1 - d) / n;
+        if (vi) {
+          dumpTopic = 0;
+          if (vi[i] !== 0) {
+            dumpTopic = dumpTopic = (1 - d) / m;
+          }
+        }
+        PageRankVector_new[i] = d * sum + dumpTopic;
       }
       diff = 0;
       for (let i = 0; i < n; i++) {

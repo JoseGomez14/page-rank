@@ -5,6 +5,7 @@ import styles from "@/styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { SearchIcon, SettingsIcon } from "@/components/iconos";
 import SettingsModal from "@/components/settingsModal";
+import UserPreferences from "@/utils/UserPreferences";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +15,21 @@ export default function Home() {
   const [recomendations, setRecomendations] = useState([]);
   const [inputSearch, setInputSearch] = useState("");
   const [showSettings, setShowSettings] = useState(false);
+  const userPreferences = new UserPreferences();
 
   useEffect(() => {
-    fetch("/api/pageRank")
+    let topicsPreferences = null;
+    if (userPreferences.anyTopicSelected()) {
+      topicsPreferences = userPreferences.getTopicsPreferences();
+      topicsPreferences = JSON.stringify(topicsPreferences);
+    }
+    fetch("/api/pageRank", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        topicsPreferences: topicsPreferences,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setRecomendations(data.pageRank.slice(0, 5)));
 
@@ -28,8 +41,19 @@ export default function Home() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const query = e.target.query.value.trim();
+    let topicsPreferences = null;
+    if (userPreferences.anyTopicSelected()) {
+      topicsPreferences = userPreferences.getTopicsPreferences();
+      topicsPreferences = JSON.stringify(topicsPreferences);
+    }
     if (query) {
-      fetch(`/api/pageRank?query=${query}`)
+      fetch(`/api/pageRank?query=${query}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          topicsPreferences: topicsPreferences,
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           setPageRank(data);
@@ -54,7 +78,10 @@ export default function Home() {
     <>
       <Head>
         <title>JoGui</title>
-        <meta name="description" content="JoGui.Net is a search engine PageRank based" />
+        <meta
+          name="description"
+          content="JoGui.Net is a search engine PageRank based"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
