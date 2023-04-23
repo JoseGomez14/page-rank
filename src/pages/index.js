@@ -3,7 +3,8 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { useEffect, useState } from "react";
-import { SearchIcon } from "@/components/iconos";
+import { SearchIcon, SettingsIcon } from "@/components/iconos";
+import SettingsModal from "@/components/settingsModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,11 +13,16 @@ export default function Home() {
   const [error, setError] = useState(null);
   const [recomendations, setRecomendations] = useState([]);
   const [inputSearch, setInputSearch] = useState("");
+  const [showSettings, setShowSettings] = useState(false);
 
   useEffect(() => {
     fetch("/api/pageRank")
       .then((res) => res.json())
       .then((data) => setRecomendations(data.pageRank.slice(0, 5)));
+
+    if (!localStorage.getItem("topicsPreferences")) {
+      setShowSettings(true);
+    }
   }, []);
 
   const handleSubmit = (e) => {
@@ -25,7 +31,14 @@ export default function Home() {
     if (query) {
       fetch(`/api/pageRank?query=${query}`)
         .then((res) => res.json())
-        .then((data) => setPageRank(data));
+        .then((data) => {
+          setPageRank(data);
+          if (data.pageRank.length === 0) {
+            setError("No results found, try another query...");
+          } else {
+            setError(null);
+          }
+        });
     }
   };
 
@@ -46,6 +59,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        <button
+          className={styles.settingButton}
+          onClick={() => setShowSettings(true)}
+        >
+          <SettingsIcon />
+        </button>
         <div className={styles.center}>
           <Image
             className={styles.logo}
@@ -72,31 +91,42 @@ export default function Home() {
         </form>
         <br />
         <div className={styles.grid}>
-          {pageRank.pageRank
-            ? pageRank.pageRank.map(({ value, title, description }, index) => (
+          {pageRank.pageRank ? (
+            <>
+              {error && <p className={inter.className}>{error}</p>}
+
+              {pageRank.pageRank.length > 0 && (
+                <h2 className={inter.className}>
+                  {pageRank.pageRank.length} Result
+                  {pageRank.pageRank.length === 1 ? "" : "s"}, in{" "}
+                  {pageRank.time.toFixed(4)} seconds, with {pageRank.iterations}{" "}
+                  iterations
+                </h2>
+              )}
+              {pageRank.pageRank.map(({ value, title, description }, index) => (
                 <div key={index} className={styles.card}>
                   <h2 className={inter.className}>{title}</h2>
                   <p className={inter.className}>{description}</p>
                   <p className={inter.className}>PR: {value.toFixed(4)}</p>
                 </div>
-              ))
-            : recomendations.length > 0 && (
-                <>
-                  <h2 className={inter.className}>Recomended Pages</h2>
-                  {recomendations.map(
-                    ({ value, title, description }, index) => (
-                      <div key={index} className={styles.card}>
-                        <h2 className={inter.className}>{title}</h2>
-                        <p className={inter.className}>{description}</p>
-                        <p className={inter.className}>
-                          PR: {value.toFixed(4)}
-                        </p>
-                      </div>
-                    )
-                  )}
-                </>
-              )}
+              ))}
+            </>
+          ) : (
+            recomendations.length > 0 && (
+              <>
+                <h2 className={inter.className}>Recomended Pages</h2>
+                {recomendations.map(({ value, title, description }, index) => (
+                  <div key={index} className={styles.card}>
+                    <h2 className={inter.className}>{title}</h2>
+                    <p className={inter.className}>{description}</p>
+                    <p className={inter.className}>PR: {value.toFixed(4)}</p>
+                  </div>
+                ))}
+              </>
+            )
+          )}
         </div>
+        <SettingsModal show={showSettings} setShow={setShowSettings} />
       </main>
     </>
   );
