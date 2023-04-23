@@ -9,6 +9,7 @@ export default class WebMatrix {
     this._dfMatrix = []; // Array to store the Matrix M as a sparse Matrix.
     this._DeadEdges = []; // It contains Dead Edges that will be deleted by the DropDeadEnd method.
     this._PageRankVector = {}; // Dictionary to store the PageRank for each node.
+    this._TrustRankVector = {}; // Dictionary to store the TrustRank for each node.
     this._DeadEnds = []; // The list contains the DeadEnd nodes used by the method find_DegreeOfNodes.
     this._FullDeadEnds = []; // The list contains the DeadEnd nodes used by the method DropDeadEnd.
   }
@@ -200,5 +201,49 @@ export default class WebMatrix {
     }
 
     return this._PageRankVector;
+  }
+
+  /**
+   * The TrustRank method calculates the trustworthiness of each node in the graph.
+   * @param {Number} d - damping factor.
+   * @param {Number} eps - convergence threshold.
+   * @returns {Array} - array storing the trustworthiness of each node.
+   * @returns {Number} - number of iterations.
+   * @returns {Number} - number of dead end nodes dropped.
+   */
+  TrustRank_(d, eps) {
+    let nodes = Array.from(this._G.keys());
+    let TrustRankVector = new Array(this._n).fill(1);
+    let m = 0;
+
+    nodes.forEach((node, idx) => {
+      if (WebNetwork[node].trust === 0) {
+        TrustRankVector[idx] = 0;
+      } else {
+        m++;
+      }
+    });
+
+    if (m != 0) {
+      TrustRankVector = TrustRankVector.map((val) => val / m);
+    }
+    let [trustRank, iterations] = this.Taxation_(d, eps, TrustRankVector, m);
+    this._TrustRankVector = trustRank;
+
+    if (this._FullDeadEnds.length !== 0) {
+      this._FullDeadEnds.reverse().forEach((node) => {
+        let pr_node = 0;
+        let node_edges = this._DeadEdges.filter((edge) => edge[1] === node);
+        node_edges.forEach((edge) => {
+          let prob = edge[2];
+          let pr_node_in = this._TrustRankVector[edge[0]];
+          pr_node += pr_node_in * prob;
+        });
+
+        this._TrustRankVector[node] = pr_node;
+      });
+    }
+
+    return [this._TrustRankVector, iterations];
   }
 }
