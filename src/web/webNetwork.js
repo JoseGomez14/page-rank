@@ -154,4 +154,11 @@ export const WebNetwork = {
     primaryTopic: "computers",
     secondaryTopics: ["science"],
   },
+  BC: {
+    title: "Best Cars",
+    description: "The latest news and reviews on cars",
+    links: ["TU", "XY"],
+    primaryTopic: "recreation",
+    secondaryTopics: ["reference"],
+  }
 };

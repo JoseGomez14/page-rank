@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { SearchIcon, SettingsIcon } from "@/components/iconos";
 import SettingsModal from "@/components/settingsModal";
 import UserPreferences from "@/utils/UserPreferences";
+import Graph from "@/components/Graph";
 
 const inter = Inter({ subsets: ["latin"] });
 
