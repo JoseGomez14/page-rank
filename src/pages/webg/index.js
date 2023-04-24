@@ -1,24 +1,14 @@
+import styles from '@/styles/Home.module.css'
 import Graph from '@/components/Graph';
+import { Inter } from 'next/font/google';
 
-const graphData = {
-  nodes: [
-    { id: 'A' },
-    { id: 'B' },
-    { id: 'C' },
-    { id: 'D' },
-    { id: 'E' }
-  ],
-  links: [
-    { source: 'A', target: 'B', value: 1 },
-    { source: 'A', target: 'C', value: 2 },
-    { source: 'B', target: 'D', value: 3 },
-    { source: 'C', target: 'D', value: 4 },
-    { source: 'D', target: 'E', value: 5 }
-  ]
-};
+const inter = Inter({ subsets: ["latin"] });
 
 function webg() {
-  return <Graph data={graphData} />;
+  return <main className={styles.main} style={{ padding: '3rem 1rem'}}>
+    <h1 className={inter.className} style={{ marginBottom: '2rem'}}>The Web Graph</h1>
+    <Graph />
+  </main>;
 }
 
 export default webg;

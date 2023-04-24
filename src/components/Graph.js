@@ -1,9 +1,6 @@
 import { useEffect, useRef } from "react";
 import * as d3 from "d3";
 import { WebNetwork } from "@/web/webNetwork";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 function Graph() {
   const ref = useRef();
@@ -72,15 +69,11 @@ function Graph() {
   }, [data]);
 
   return (
-    <div style={{margin: '1rem'}}>
-      <h1 className={inter.className}>The Web Graph</h1>
       <svg
         ref={ref}
-        width="1700"
-        height="800"
-        style={{ margin: "0 auto", height: "100vh" }}
+        width="1000"
+        height="500"
       ></svg>
-    </div>
   );
 }
 
