@@ -230,7 +230,7 @@ export const WebNetwork = {
     links: ["QR", "FG"],
     primaryTopic: "home",
     secondaryTopics: ["recreation", "shopping"],
-    trust: 1,
+    trust: 0,
   },
   BD: {
     title: "Blockchain Daily",
@@ -294,7 +294,7 @@ export const WebNetwork = {
     links: ["HI", "FG"],
     primaryTopic: "home",
     secondaryTopics: ["art", "recreation"],
-    trust: 1,
+    trust: 0,
   },
   LO: {
     title: "Language Online",
@@ -302,7 +302,7 @@ export const WebNetwork = {
     links: ["CE", "LM"],
     primaryTopic: "education",
     secondaryTopics: ["reference", "world"],
-    trust: 1,
+    trust: 0,
   },
   MP: {
     title: "Music Pulse",
@@ -334,7 +334,7 @@ export const WebNetwork = {
     links: ["EG", "QW"],
     primaryTopic: "science",
     secondaryTopics: ["home", "world"],
-    trust: 1,
+    trust: 0,
   },
   TA: {
     title: "Tech Advances",
@@ -366,7 +366,7 @@ export const WebNetwork = {
     links: ["NO", "SZ"],
     primaryTopic: "science",
     secondaryTopics: ["education", "recreation"],
-    trust: 1,
+    trust: 0,
   },
   AJ: {
     title: "Artistic Journey",
@@ -385,7 +385,7 @@ export const WebNetwork = {
     links: ["MN", "OP", "EF"],
     primaryTopic: "business",
     secondaryTopics: ["reference", "society"],
-    trust: 1,
+    trust: 0,
   },
 
   CL: {
@@ -442,7 +442,7 @@ export const WebNetwork = {
     links: ["PQ", "RS", "TU"],
     primaryTopic: "home",
     secondaryTopics: ["shopping", "recreation"],
-    trust: 1,
+    trust: 0,
   },
 
   IR: {
@@ -460,7 +460,7 @@ export const WebNetwork = {
     links: ["YX", "ZA", "VB"],
     primaryTopic: "sports",
     secondaryTopics: ["kids and teens", "recreation"],
-    trust: 1,
+    trust: 0,
   },
 
   KT: {
@@ -489,7 +489,7 @@ export const WebNetwork = {
     links: ["FH", "GI", "HJ"],
     primaryTopic: "recreation",
     secondaryTopics: ["art", "society"],
-    trust: 1,
+    trust: 0,
   },
 
   NW: {
@@ -507,7 +507,7 @@ export const WebNetwork = {
     links: ["QW", "RT", "SZ"],
     primaryTopic: "sports",
     secondaryTopics: ["recreation", "travel"],
-    trust: 1,
+    trust: 0,
   },
 
   PY: {
@@ -516,7 +516,7 @@ export const WebNetwork = {
     links: ["TA", "UQ", "VN"],
     primaryTopic: "home",
     secondaryTopics: ["recreation", "shopping"],
-    trust: 1,
+    trust: 0,
   },
 
   QZ: {
@@ -535,7 +535,7 @@ export const WebNetwork = {
     links: ["DF", "EG", "FH"],
     primaryTopic: "computers",
     secondaryTopics: ["science", "education"],
-    trust: 1,
+    trust: 0,
   },
 
   SB: {
@@ -544,7 +544,7 @@ export const WebNetwork = {
     links: ["GI", "HJ", "IK"],
     primaryTopic: "business",
     secondaryTopics: ["science", "society"],
-    trust: 1,
+    trust: 0,
   },
 
   TC: {
@@ -562,7 +562,7 @@ export const WebNetwork = {
     links: ["RT", "SZ", "TA"],
     primaryTopic: "art",
     secondaryTopics: ["science", "home"],
-    trust: 1,
+    trust: 0,
   },
 
   VE: {
@@ -590,7 +590,7 @@ export const WebNetwork = {
     links: ["EG", "FH", "GI"],
     primaryTopic: "sports",
     secondaryTopics: ["recreation", "health"],
-    trust: 1,
+    trust: 0,
   },
 
   YH: {
@@ -610,7 +610,7 @@ export const WebNetwork = {
     primaryTopic: "science",
     secondaryTopics: ["home", "society"],
 
-    trust: 1,
+    trust: 0,
   },
 
   AT: {
@@ -630,7 +630,7 @@ export const WebNetwork = {
     links: ["VN", "ZB", "BC"],
     primaryTopic: "kids and teens",
     secondaryTopics: ["recreation", "education"],
-    trust: 1,
+    trust: 0,
   },
 
   LD: {
@@ -694,7 +694,7 @@ export const WebNetwork = {
     links: ["RS", "TU"],
     primaryTopic: "education",
     secondaryTopics: ["recreation"],
-    trust: 1,
+    trust: 0,
   },
   BX: {
     title: "Business Xpress",
@@ -710,7 +710,7 @@ export const WebNetwork = {
     links: ["NO", "PQ"],
     primaryTopic: "kids and teens",
     secondaryTopics: ["recreation"],
-    trust: 1,
+    trust: 0,
   },
   JF: {
     title: "Job Finder",
@@ -728,7 +728,7 @@ export const WebNetwork = {
     links: ["WX", "YX"],
     primaryTopic: "science",
     secondaryTopics: ["reference"],
-    trust: 1,
+    trust: 0,
   },
   ZN: {
     title: "Zoo News",
@@ -752,7 +752,7 @@ export const WebNetwork = {
     links: ["ZI", "KC"],
     primaryTopic: "recreation",
     secondaryTopics: ["reference"],
-    trust: 1,
+    trust: 0,
   },
   KJ: {
     title: "Kitchen Delight",
@@ -760,7 +760,7 @@ export const WebNetwork = {
     links: ["LM", "NO"],
     primaryTopic: "health",
     secondaryTopics: ["food", "home"],
-    trust: 1,
+    trust: 0,
   },
   PU: {
     title: "Planet Universe",
@@ -808,7 +808,7 @@ export const WebNetwork = {
     links: ["VD"],
     primaryTopic: "recreation",
     secondaryTopics: ["travel", "culture"],
-    trust: 1,
+    trust: 0,
   },
   YD: {
     title: "Your Diet",
@@ -816,7 +816,7 @@ export const WebNetwork = {
     links: ["FG"],
     primaryTopic: "health",
     secondaryTopics: ["food", "fitness"],
-    trust: 1,
+    trust: 0,
   },
   PI: {
     title: "Pet Information",
@@ -840,7 +840,7 @@ export const WebNetwork = {
     links: ["ZI", "KC"],
     primaryTopic: "recreation",
     secondaryTopics: ["animals", "society"],
-    trust: 1,
+    trust: 0,
   },
   KF: {
     title: "Kicks for You",
@@ -856,7 +856,7 @@ export const WebNetwork = {
     links: ["JF"],
     primaryTopic: "home",
     secondaryTopics: ["health", "recreation"],
-    trust: 1,
+    trust: 0,
   },
   UV: {
     title: "Ultimate Vehicles",
@@ -865,7 +865,7 @@ export const WebNetwork = {
     links: ["MP"],
     primaryTopic: "recreation",
     secondaryTopics: ["reference", "science"],
-    trust: 1,
+    trust: 0,
   },
   WH: {
     title: "World History Hub",
@@ -932,7 +932,7 @@ export const WebNetwork = {
     links: [],
     primaryTopic: "recreation",
     secondaryTopics: ["travel", "technology"],
-    trust: 1,
+    trust: 0,
   },
   OJ: {
     title: "Online Journal",
@@ -999,7 +999,7 @@ export const WebNetwork = {
     links: [],
     primaryTopic: "environment",
     secondaryTopics: ["home", "health"],
-    trust: 1,
+    trust: 0,
   },
   PF: {
     title: "Photo Fun",
