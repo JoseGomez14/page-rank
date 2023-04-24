@@ -3,7 +3,14 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { useEffect, useState } from "react";
-import { GithubIcon, SearchIcon, SettingsIcon } from "@/components/iconos";
+import {
+  DarkIcon,
+  GithubIcon,
+  GraphIcon,
+  LightIcon,
+  SearchIcon,
+  SettingsIcon,
+} from "@/components/iconos";
 import SettingsModal from "@/components/settingsModal";
 import UserPreferences from "@/utils/UserPreferences";
 import Link from "next/link";
@@ -17,10 +24,11 @@ export default function Home() {
   const [inputSearch, setInputSearch] = useState("");
   const [showSettings, setShowSettings] = useState(false);
   const userPreferences = new UserPreferences();
-  // const [theme, setTheme] = useState("dark");
+  const [scheme, setScheme] = useState("");
 
   useEffect(() => {
     let topicsPreferences = null;
+
     if (userPreferences.anyTopicSelected()) {
       topicsPreferences = userPreferences.getTopicsPreferences();
       topicsPreferences = JSON.stringify(topicsPreferences);
@@ -38,11 +46,18 @@ export default function Home() {
     if (!localStorage.getItem("topicsPreferences")) {
       setShowSettings(true);
     }
-
-    // if (localStorage.getItem("theme")) {
-    //   setTheme(localStorage.getItem("theme"));
-    // }
   }, []);
+
+  useEffect(() => {
+    if (scheme == "") {
+      if (!localStorage.getItem("scheme")) {
+        localStorage.setItem("scheme", "dark");
+      }
+      setScheme(localStorage.getItem("scheme"));
+    }
+
+    document.documentElement.setAttribute("scheme", scheme);
+  }, [scheme]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -80,11 +95,10 @@ export default function Home() {
     }
   };
 
-  const handleThemeChange = (e) => {
-    const { value } = e.target;
-    setTheme(value);
-    localStorage.setItem("theme", value);
-    // change the prefers-color-scheme when the user clicks on the button
+  const handleChangeScheme = () => {
+    let colorScheme = scheme == "dark" ? "light" : "dark";
+    localStorage.setItem("scheme", colorScheme);
+    setScheme(colorScheme);
   };
 
   return (
@@ -95,6 +109,7 @@ export default function Home() {
           name="description"
           content="JoGui.Net is a search engine PageRank based"
         />
+        <meta name="color-scheme" content="dark light" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -106,14 +121,16 @@ export default function Home() {
           >
             <SettingsIcon />
           </button>
-          {/* <button
+          <Link className={styles.settingButton} href="/webg">
+            <GraphIcon />
+          </Link>
+          <button
             className={styles.settingButton}
-            title="Change Theme"
-            value={theme === "dark" ? "light" : "dark"}
-            onClick={handleThemeChange}
+            title={scheme === "dark" ? "Light Mode" : "Dark Mode"}
+            onClick={handleChangeScheme}
           >
-            {theme === "dark" ? "🌚" : "🌞"}
-          </button> */}
+            {scheme !== "dark" ? <DarkIcon /> : <LightIcon />}
+          </button>
           <Link
             className={styles.settingButton}
             href="https://github.com/JoseGomez14/page-rank"

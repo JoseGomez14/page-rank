@@ -97,7 +97,7 @@
 
 .center::before,
 .center::after {
-  content: '';
+  content: "";
   left: 50%;
   position: absolute;
   filter: blur(45px);
@@ -131,7 +131,7 @@
   outline: none;
 }
 
-.button{
+.button {
   position: absolute;
   right: 0;
   top: 3px;
@@ -145,7 +145,7 @@
   outline: none;
 }
 
-.fixedButtons{
+.fixedButtons {
   position: fixed;
   top: 1rem;
   right: 1rem;
@@ -154,7 +154,7 @@
   z-index: 100;
 }
 
-.settingButton{
+.settingButton {
   width: 48px;
   height: 48px;
   border: none;
@@ -168,13 +168,15 @@
   align-items: center;
 }
 
-.button:hover, .settingButton:hover {
+.button:hover,
+.settingButton:hover {
   transition: transform 200ms;
   transform: scale(1.1);
 }
 
 .logo {
   position: relative;
+  filter: invert(var(--invert-logo)) drop-shadow(0 0 0.3rem #ffffff70);
 }
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
@@ -275,16 +277,6 @@
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {
     grid-template-columns: repeat(2, 50%);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .vercelLogo {
-    filter: invert(1);
-  }
-
-  .logo {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
   }
 }
 
