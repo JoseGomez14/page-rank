@@ -61,4 +61,72 @@ const GithubIcon = () => {
   );
 };
 
-export { SearchIcon, SettingsIcon, GithubIcon };
+const GraphIcon = (props) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="icon icon-tabler icon-tabler-sitemap"
+      width={32}
+      height={32}
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="#2c3e50"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M0 0h24v24H0z" stroke="none" />
+      <rect x={3} y={15} width={6} height={6} rx={2} />
+      <rect x={15} y={15} width={6} height={6} rx={2} />
+      <rect x={9} y={3} width={6} height={6} rx={2} />
+      <path d="M6 15v-1a2 2 0 012-2h8a2 2 0 012 2v1" />
+      <path d="M12 9L12 12" />
+    </svg>
+  );
+};
+
+const LightIcon = (props) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="icon icon-tabler icon-tabler-sun"
+      width={32}
+      height={32}
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="#2c3e50"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M0 0h24v24H0z" stroke="none" />
+      <circle cx={12} cy={12} r={4} />
+      <path d="M3 12h1m8-9v1m8 8h1m-9 8v1M5.6 5.6l.7.7m12.1-.7l-.7.7m0 11.4l.7.7m-12.1-.7l-.7.7" />
+    </svg>
+  );
+};
+
+const DarkIcon = (props) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="icon icon-tabler icon-tabler-moon"
+      width={32}
+      height={32}
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="#2c3e50"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M0 0h24v24H0z" stroke="none" />
+      <path d="M12 3h.393a7.5 7.5 0 007.92 12.446A9 9 0 1112 2.992z" />
+    </svg>
+  );
+};
+
+export { SearchIcon, SettingsIcon, GithubIcon, GraphIcon, LightIcon, DarkIcon };
