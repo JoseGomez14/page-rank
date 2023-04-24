@@ -78,10 +78,9 @@ export default function Home() {
         .then((res) => res.json())
         .then((data) => {
           setPageRank(data);
+          setError(null);
           if (data.pageRank.length === 0) {
             setError("No results found, try another query...");
-          } else {
-            setError(null);
           }
         });
     }
@@ -185,8 +184,9 @@ export default function Home() {
                     <h2 className={inter.className}>{title}</h2>
                     <p className={inter.className}>{description}</p>
                     <p className={inter.className}>
-                      PR: {value.toFixed(4)} | TR: {trustRank.toFixed(4)} | SM:{" "}
-                      {spamMass ? spamMass.toFixed(4) : "N/A"}
+                      PR: {value ? value.toFixed(4) : "0.0000"} | TR:{" "}
+                      {trustRank ? trustRank.toFixed(4) : "0.0000"} | SM:{" "}
+                      {spamMass ? spamMass.toFixed(4) : "0.0000"}
                     </p>
                   </div>
                 )
