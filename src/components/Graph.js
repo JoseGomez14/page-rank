@@ -72,7 +72,7 @@ function Graph() {
       <svg
         ref={ref}
         width="1000"
-        height="500"
+        height="1200"
       ></svg>
   );
 }
