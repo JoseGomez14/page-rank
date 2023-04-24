@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: UserPreferences.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: UserPreferences.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { topics } from "@/web/topics";
+
+export default class UserPreferences {
+  constructor() {
+    let topicsPreferences = {};
+    for (let topic of topics) {
+      topicsPreferences[topic] = 0;
+    }
+    this._topicsPreferences = topicsPreferences;
+  }
+
+  /**
+   * This method returns the topics preferences.
+   * @returns {Object} - object storing the topics preferences.
+   *
+   * @example &lt;caption>Example usage of getTopicsPreferences method.&lt;/caption>
+   * returns { "art": 0, "business": 0, "computers": 0, "games": 0, "health": 0, "home": 0, "news": 0, "recreation": 0, "reference": 0, "regional": 0, "science": 0, "shopping": 0, "society": 0, "sports": 0, "kids and teens": 0, "world": 0 }
+   */
+  getTopicsPreferences() {
+    if (localStorage.getItem("topicsPreferences") !== null) {
+      const topicsPreferences = JSON.parse(
+        localStorage.getItem("topicsPreferences")
+      );
+      this._topicsPreferences = topicsPreferences;
+    }
+    return this._topicsPreferences;
+  }
+
+  /**
+   * This method sets the topics preferences.
+   * @param {Object} topicsPreferences - object storing the topics preferences.
+   * @returns {Object} - object storing the topics preferences.
+   * @example &lt;caption>Example usage of setTopicsPreferences method.&lt;/caption>
+   * topicsPreferences = { "art": 1, "business": 0, "computers": 0, "games": 0, "health": 0, "home": 0, "news": 0, "recreation": 0, "reference": 0, "regional": 0, "science": 0, "shopping": 0, "society": 0, "sports": 0, "kids and teens": 0, "world": 0 }
+   * returns { "art": 1, "business": 0, "computers": 0, "games": 0, "health": 0, "home": 0, "news": 0, "recreation": 0, "reference": 0, "regional": 0, "science": 0, "shopping": 0, "society": 0, "sports": 0, "kids and teens": 0, "world": 0 }
+   * @throws {Error} - if the topicsPreferences parameter is not an object.
+   * @throws {Error} - if the topicsPreferences parameter is an empty object.
+   */
+  setTopicsPreferences(topicsPreferences) {
+    if (typeof topicsPreferences !== "object") {
+      throw new Error("topicsPreferences parameter is not an object.");
+    }
+    if (Object.keys(topicsPreferences).length === 0) {
+      throw new Error("topicsPreferences parameter is an empty object.");
+    }
+    localStorage.setItem(
+      "topicsPreferences",
+      JSON.stringify(topicsPreferences)
+    );
+    this._topicsPreferences = topicsPreferences;
+    return topicsPreferences;
+  }
+
+  /**
+   * This method returns the topic preference.
+   * @param {string} topic - topic to get the preference.
+   * @returns {number} - topic preference.
+   * @example &lt;caption>Example usage of getTopicPreference method.&lt;/caption>
+   * topic = "art"
+   * returns 1
+   */
+  getTopicPreference(topic) {
+    if (localStorage.getItem("topicsPreferences") !== null) {
+      const topicsPreferences = JSON.parse(
+        localStorage.getItem("topicsPreferences")
+      );
+      this._topicsPreferences = topicsPreferences;
+    }
+    return this._topicsPreferences[topic];
+  }
+
+  /**
+   * This method sets the topic preference.
+   * @param {string} topic - topic to set the preference.
+   * @param {number} preference - topic preference.
+   * @returns {number} - topic preference.
+   */
+  setTopicPreference(topic, preference) {
+    if (localStorage.getItem("topicsPreferences") !== null) {
+      const topicsPreferences = JSON.parse(
+        localStorage.getItem("topicsPreferences")
+      );
+      this._topicsPreferences = topicsPreferences;
+    }
+    this._topicsPreferences[topic] = preference;
+    localStorage.setItem(
+      "topicsPreferences",
+      JSON.stringify(this._topicsPreferences)
+    );
+    return preference;
+  }
+
+  /**
+   * This method return true if the user has selected at least one topic.
+   * @returns {boolean} - true if the user has selected at least one topic, false otherwise.
+   * @example &lt;caption>Example usage of hasAnyTopicSelected method.&lt;/caption>
+   * returns true
+   */
+  anyTopicSelected() {
+    if (localStorage.getItem("topicsPreferences") !== null) {
+      const topicsPreferences = JSON.parse(
+        localStorage.getItem("topicsPreferences")
+      );
+      this._topicsPreferences = topicsPreferences;
+    }
+    for (let topic of topics) {
+      if (this._topicsPreferences[topic] === 1) {
+        return true;
+      }
+    }
+    return false;
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#DropDeadEnd_">DropDeadEnd_</a></li><li><a href="global.html#PageRank_">PageRank_</a></li><li><a href="global.html#Taxation_">Taxation_</a></li><li><a href="global.html#TrustRank_">TrustRank_</a></li><li><a href="global.html#add_edges_">add_edges_</a></li><li><a href="global.html#add_nodes_">add_nodes_</a></li><li><a href="global.html#anyTopicSelected">anyTopicSelected</a></li><li><a href="global.html#build_matrix_">build_matrix_</a></li><li><a href="global.html#find_DegreeOfNodes_">find_DegreeOfNodes_</a></li><li><a href="global.html#getTopicPreference">getTopicPreference</a></li><li><a href="global.html#getTopicsPreferences">getTopicsPreferences</a></li><li><a href="global.html#setTopicPreference">setTopicPreference</a></li><li><a href="global.html#setTopicsPreferences">setTopicsPreferences</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Apr 24 2023 11:31:35 GMT-0500 (hora estándar de Colombia)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
