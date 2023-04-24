@@ -7,4 +7,7 @@ The algorithm is implemented in two ways:
 
  - The improved implementation includes any optimizations:
     - The algorithm is Topic Sensitive.
-    - The algorithm ....
+    - The algorithm compute the PageRank avoiding the Dead Ends.
+    - The algorithm compute the PageRank avoiding the Spider Traps.
+    - The algorithm compute the TrustRank.
+    - The algorithm compute the SpamMass.
